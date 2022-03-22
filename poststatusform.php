@@ -6,7 +6,7 @@
         <link rel = "stylesheet" href = "style.css">
     </head>
     <body>
-        <form method = "post" action = "">
+        <form method = "post" action = "postatusprocess.php">
             <label>Status Code <input type = "text" name = "statuscode"></br>
             <label>Status <input type = "text" name = "status"></br>
 
