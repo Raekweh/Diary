@@ -25,7 +25,7 @@
             //date
             //permission
         }
-            //functions to check if the code is correct
+            //functions to check if the code is correct (Have not tested yet)
         function checkCode($code)
         {
             int counter = 0;
@@ -60,16 +60,22 @@
             }
         }
 
-        //function to check if the status is correct
+        //function to check if the status is correct (Have not tested yet)
         function checkStatus($status)
         {
-            //Does not contain special characters
+            $pattern = "/[A-Za-z ]+$/";
+            //Checks if the status contains only alphabet and spaces
+            if(preg_match($pattern, $status))
+            {
+                return true;
+            }
+            return false;
         }                
         
         //function to check  the date
         function checkDate(DATE $date)
         {
-            /Must be in the format of dd/mm/yyyy
+            //Must be in the format of dd/mm/yyyy
         }
     ?>
 </body>
