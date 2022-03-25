@@ -19,12 +19,16 @@
             echo "<p>Database connection failure</p>";
         }
         else{
-            if()
-            //code
-            //status
-            //share
-            //date
-            //permission
+            //Condition to check if the inputs meet the requirements //!!!!!!Remember to add checkDate into the condition
+            if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"])&& checkPermission($_POST["permission"]) && checkShare($_POST["share"]))
+            {
+
+            }
+            else
+            {
+                //Might need to change this so it detects each inputs
+                echo "<p>Please check if you are missing or have incorrect information inputs </p>";
+            }
         }
         //functions to check if the code is correct (I need to check if its null or empty)
         function checkCode($code)
@@ -76,9 +80,10 @@
         }                
         
         //function to check  the date
-        function checkDate($date, $format = 'dd-mm-yyyy')
+        function checkDate($date, $format = 'd/m/Y')
         {
-
+            $d = DateTime::createFromFormat($format, $date);
+            return $d && $d -> format($format) == $date;
             //Must be in the format of dd/mm/yyyy
         }
 
