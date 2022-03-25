@@ -19,13 +19,14 @@
             echo "<p>Database connection failure</p>";
         }
         else{
+            if()
             //code
             //status
             //share
             //date
             //permission
         }
-        //functions to check if the code is correct (Have not tested yet)
+        //functions to check if the code is correct (I need to check if its null or empty)
         function checkCode($code)
         {
             $counter = 0;
@@ -62,7 +63,7 @@
             }
         }
 
-        //function to check if the status is correct (Have not tested yet)
+        //function to check if the status is correct (I need to chec if its null or empty)
         function checkStatus($status)
         {
             $pattern = "/[A-Za-z ]+$/";
@@ -75,9 +76,32 @@
         }                
         
         //function to check  the date
-        function checkDate(DATE $date)
+        function checkDate($date, $format = 'dd-mm-yyyy')
         {
+
             //Must be in the format of dd/mm/yyyy
+        }
+
+        //Not tested
+        function checkShare($share)
+        {
+            //Checks if the radiobutton is null or not selected
+            if(isset($share))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        //Not tested
+        function checkPermission($permission)
+        {
+            //Check if the checkbox is null or not selected
+            if(isset($permission))
+            {
+                return true;
+            }
+            return false;
         }
     ?>
 </body>
