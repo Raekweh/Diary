@@ -25,37 +25,39 @@
             //date
             //permission
         }
-            //functions to check if the code is correct (Have not tested yet)
+        //functions to check if the code is correct (Have not tested yet)
         function checkCode($code)
         {
-            int counter = 0;
-            //Check if the code is 5 characters
-            if(strlen($code) == 5)
+            $counter = 0;
+            $codeLen = strlen($code);
+            if($codeLen == 5)
             {
-                for($i = 0 ; $i < strlen($code); $i++)
+            	echo "<p> The length of the code is 5 </p>";
+                for($i = 0 ; $i < $codeLen; $i++)
                 {
-                    //Check if the first character is 
-                    if($i == 1 && !(is_numeric($code[1])))
+                    //Check if the first character is a letter (might need to change it to caps only and give a warning)
+                    if($i == 0 && !(is_numeric($code[$i])))
                     {
                         $counter++;
                     }
-                    else if($i != 1 && is_numeric($code[$i]))
+                    //Check if the remaining characters are numbers only
+                    else if($i != 0 && is_numeric($code[$i]))
                     {
                         $counter++;
                     }
                 }
-                //If the code is in the correct format 
+                //Checking if the code formmatt is correct (Need something to check if the code exist e.g. use database)
                 if($counter == 5)
                 {
-                    //ALso need a condition to check if the code exist
                     return true;
                 }
-                else{
+                else
+                {
                     return false;
                 }
             }
-            //If the code is not 5 characters
-            else{
+            else
+            {
                 return false;
             }
         }
