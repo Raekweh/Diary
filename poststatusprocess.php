@@ -22,11 +22,34 @@
             //Condition to check if the inputs meet the requirements
             if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) checkDate($_POST["date"]) && checkPermission($_POST["permission"]) && checkShare($_POST["share"]))
             {
+                //Getting data from the form
                 $code = $_POST["statuscode"];
                 $status = $_POST["status"];
                 $permission = $_POST["permission"];
                 $share = $_POST["share"];
-                $date = $_POST["date"]
+                $date = $_POST["date"];
+
+                //Creating the sql commond to add the data into the table
+                $query = "insert into $sql_tble"
+                            ."(code, status, permission, share, date)"
+                        . "values"
+                    ."('$code','$status','$permission','$share','$date)";       
+                
+                echo $query;
+                
+                //executes the query
+                $result = mysqli_query($conn,$query);
+                
+                //Checks if the eceuction was successful
+                if(!$result)
+                {
+                    echo "<p> Somethign is wrong with ", $query,"</p>";
+                }
+                else{
+                    echo "<p>Success</p>";
+                }
+
+                mysqli_close($conn);
             }
             else
             {
