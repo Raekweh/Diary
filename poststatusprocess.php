@@ -19,10 +19,14 @@
             echo "<p>Database connection failure</p>";
         }
         else{
-            //Condition to check if the inputs meet the requirements //!!!!!!Remember to add checkDate into the condition
-            if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"])&& checkPermission($_POST["permission"]) && checkShare($_POST["share"]))
+            //Condition to check if the inputs meet the requirements
+            if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) checkDate($_POST["date"]) && checkPermission($_POST["permission"]) && checkShare($_POST["share"]))
             {
-
+                $code = $_POST["statuscode"];
+                $status = $_POST["status"];
+                $permission = $_POST["permission"];
+                $share = $_POST["share"];
+                $date = $_POST["date"]
             }
             else
             {
@@ -84,7 +88,6 @@
         {
             $d = DateTime::createFromFormat($format, $date);
             return $d && $d -> format($format) == $date;
-            //Must be in the format of dd/mm/yyyy
         }
 
         //Not tested
