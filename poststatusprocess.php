@@ -29,7 +29,9 @@
                 $share = $_POST["share"];
                 $date = $_POST["date"];
 
-                //Creating the sql commond to add the data into the table
+                //Check if the database table exists
+                
+                //Creating the sql command to add the data into the table
                 $query = "insert into $sql_tble"
                             ."(code, status, permission, share, date)"
                         . "values"
@@ -49,6 +51,7 @@
                     echo "<p>Success</p>";
                 }
 
+                //Closing the databae connection
                 mysqli_close($conn);
             }
             else
@@ -57,11 +60,31 @@
                 echo "<p>Please check if you are missing or have incorrect information inputs </p>";
             }
         }
+
+        //Checking if the code exist in the database
+        function checkQuery($code)
+        {
+            $query = "SELECT * FROM  $sql_tble WHERE code = '$code'";
+            $result = mysql_query($query);
+            if($result)
+            {
+                //If the query exists
+                if(mysql_num_rows($result) > 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+            else{
+                echo "THe database does not exist";
+            }
+        }
         //functions to check if the code is correct (I need to check if its null or empty)
         function checkCode($code)
         {
             $counter = 0;
             $codeLen = strlen($code);
+            $query = ;
             if($codeLen == 5)
             {
             	echo "<p> The length of the code is 5 </p>";
@@ -79,7 +102,7 @@
                     }
                 }
                 //Checking if the code formmatt is correct (Need something to check if the code exist e.g. use database)
-                if($counter == 5)
+                if($counter == 5 && checkQuery ($code))
                 {
                     return true;
                 }
