@@ -29,36 +29,73 @@
                 $share = $_POST["share"];
                 $date = $_POST["date"];
 
-                //Check if the database table exists
-                
-                //Creating the sql command to add the data into the table
-                $query = "insert into $sql_tble"
-                            ."(code, status, permission, share, date)"
-                        . "values"
-                    ."('$code','$status','$permission','$share','$date)";       
-                
-                echo $query;
-                
-                //executes the query
-                $result = mysqli_query($conn,$query);
-                
-                //Checks if the eceuction was successful
-                if(!$result)
-                {
-                    echo "<p> Somethign is wrong with ", $query,"</p>";
-                }
-                else{
-                    echo "<p>Success</p>";
-                }
+                $tableQuery = "SELECT * FROM $sql_tble";
 
-                //Closing the databae connection
-                mysqli_close($conn);
+                 //Creating the sql command to add the data into the table
+                $insertQuery = "INSERT INTO $sql_tble"
+                ."(code, status, permission, share, date)"
+                . "VALUES"
+                ."('$code','$status','$permission','$share','$date)";      
+
+                $createTableQuery = "CREATE TABLE formDB"
+                . "(code VARCHAR(5), 
+                status VARCHAR(100), 
+                date DATE, 
+                permission VARCHAR(50), 
+                share VARCHAR(50), 
+                PRIMARY KEY (code) )";
+                 
+                //Check if the database table exists
+                if(EXIST($tableQuery))
+                {                
+                    insertQueries($conn, $insertQuery);
+                }
+                else
+                {
+                    createingTable($conn,$createTableQuery, $insertQuery);
+                }
             }
             else
             {
                 //Might need to change this so it detects each inputs
                 echo "<p>Please check if you are missing or have incorrect information inputs </p>";
             }
+        }
+
+        function creatingTable($conn, $createTableQuery, $insertQuery)
+        {
+            //execute the creation of table query
+            $result =  mysqli($conn, $createTableQuery);
+
+            //Check if the execution was sucessful
+            if(!$result)
+            {
+                echo "<p> Something is wrong with ", $createTableQuery, "</p>";
+            }
+            else{
+                insertQueries($conn, $insertQuery);
+            }
+        }
+
+        //function will insert the query to the database //!!!!Need to check if this works
+        function insertQueries($conn, $insertQuery)
+        {
+            echo $query;
+                
+            //executes the insertion query
+            $result = mysqli_query($conn,$insertQuery);
+            
+            //Checks if the eceuction was successful
+            if(!$result)
+            {
+                echo "<p> Somethign is wrong with ", $insertQuery,"</p>";
+            }
+            else
+            {
+                echo "<p>Success</p>";
+            }
+            //Closing the databae connection
+            mysqli_close($conn);
         }
 
         //Checking if the code exist in the database
