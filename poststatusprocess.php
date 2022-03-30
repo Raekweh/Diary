@@ -19,46 +19,53 @@
             echo "<p>Database connection failure</p>";
         }
         else{
-            //Condition to check if the inputs meet the requirements
-            if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) checkDate($_POST["date"]) && checkPermission($_POST["permission"]) && checkShare($_POST["share"]))
+            //Check if the code and the status are non-empty entry
+            if(!empty($_POST["statuscode"]) && isset($_POST["statuscode"]) && !empty($_POST["status"]) && isset($_POST["status"]))
             {
-                //Getting data from the form
-                $code = $_POST["statuscode"];
-                $status = $_POST["status"];
-                $permission = $_POST["permission"];
-                $share = $_POST["share"];
-                $date = $_POST["date"];
+                //Condition to check if the inputs meet the requirements
+                if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) checkDate($_POST["date"]) && checkPermission($_POST["permission"]) && checkShare($_POST["share"]))
+                {
+                    //Getting data from the form
+                    $code = $_POST["statuscode"];
+                    $status = $_POST["status"];
+                    $permission = $_POST["permission"];
+                    $share = $_POST["share"];
+                    $date = $_POST["date"];
 
-                $tableQuery = "SELECT * FROM $sql_tble";
+                    $tableQuery = "SELECT * FROM $sql_tble";
 
-                 //Creating the sql command to add the data into the table
-                $insertQuery = "INSERT INTO $sql_tble"
-                ."(code, status, permission, share, date)"
-                . "VALUES"
-                ."('$code','$status','$permission','$share','$date)";      
+                    //Creating the sql command to add the data into the table
+                    $insertQuery = "INSERT INTO $sql_tble"
+                    ."(code, status, permission, share, date)"
+                    . "VALUES"
+                    ."('$code','$status','$permission','$share','$date)";      
 
-                $createTableQuery = "CREATE TABLE formDB"
-                . "(code VARCHAR(5), 
-                status VARCHAR(100), 
-                date DATE, 
-                permission VARCHAR(50), 
-                share VARCHAR(50), 
-                PRIMARY KEY (code) )";
-                 
-                //Check if the database table exists
-                if(EXIST($tableQuery))
-                {                
-                    insertQueries($conn, $insertQuery);
+                    $createTableQuery = "CREATE TABLE formDB"
+                    . "(code VARCHAR(5), 
+                    status VARCHAR(100), 
+                    date DATE, 
+                    permission VARCHAR(50), 
+                    share VARCHAR(50), 
+                    PRIMARY KEY (code) )";
+                    
+                    //Check if the database table exists
+                    if(EXIST($tableQuery))
+                    {                
+                        insertQueries($conn, $insertQuery);
+                    }
+                    else
+                    {
+                        createingTable($conn,$createTableQuery, $insertQuery);
+                    }
                 }
                 else
                 {
-                    createingTable($conn,$createTableQuery, $insertQuery);
+                    //Might need to change this so it detects each inputs
+                    echo "<p>Please check if you are missing or have incorrect information inputs </p>";
                 }
             }
-            else
-            {
-                //Might need to change this so it detects each inputs
-                echo "<p>Please check if you are missing or have incorrect information inputs </p>";
+            else{
+                echo "<p>Please check if either your code or status is empty </p>";
             }
         }
 
