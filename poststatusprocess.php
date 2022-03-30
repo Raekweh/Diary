@@ -69,6 +69,7 @@
             }
         }
 
+        //Creates a table in the database
         function creatingTable($conn, $createTableQuery, $insertQuery)
         {
             //execute the creation of table query
@@ -84,7 +85,7 @@
             }
         }
 
-        //function will insert the query to the database //!!!!Need to check if this works
+        //Inserts the query to the database //!!!!Need to check if this works
         function insertQueries($conn, $insertQuery)
         {
             echo $query;
@@ -123,15 +124,13 @@
                 echo "THe database does not exist";
             }
         }
-        //functions to check if the code is correct (I need to check if its null or empty)
+        //functions to check if the code is correct
         function checkCode($code)
         {
             $counter = 0;
             $codeLen = strlen($code);
-            $query = ;
             if($codeLen == 5)
             {
-            	echo "<p> The length of the code is 5 </p>";
                 for($i = 0 ; $i < $codeLen; $i++)
                 {
                     //Check if the first character is a letter (might need to change it to caps only and give a warning)
@@ -161,7 +160,7 @@
             }
         }
 
-        //function to check if the status is correct (I need to chec if its null or empty)
+        //Check if the status is correct
         function checkStatus($status)
         {
             $pattern = "/[A-Za-z ]+$/";
@@ -173,14 +172,14 @@
             return false;
         }                
         
-        //function to check  the date
+        //Check the date format
         function checkDate($date, $format = 'd/m/Y')
         {
             $d = DateTime::createFromFormat($format, $date);
             return $d && $d -> format($format) == $date;
         }
 
-        //Not tested
+        //Checks if one of the share options are selected //Not tested
         function checkShare($share)
         {
             //Checks if the radiobutton is null or not selected
@@ -191,7 +190,7 @@
             return false;
         }
 
-        //Not tested
+        //Checks if one of the permission options are selected //Not tested
         function checkPermission($permission)
         {
             //Check if the checkbox is null or not selected
