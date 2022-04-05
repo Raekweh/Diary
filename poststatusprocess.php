@@ -38,7 +38,7 @@
                     $insertQuery = "INSERT INTO $sql_tble"
                     ."(code, status, permission, share, date)"
                     . "VALUES"
-                    ."('$code','$status','$permission','$share','$date)";      
+                    ."('$code','$status','$permission','$share','$date')";      
 
                     $createTableQuery = "CREATE TABLE formDB"
                     . "(code VARCHAR(5), 
