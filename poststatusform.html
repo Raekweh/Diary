@@ -7,27 +7,33 @@
 </head>
 
 <body>
-    <div class = "heading">
-        <h1>Status Posting System</h1>
-    </div>
-    <div class="bodyContainer">
-        <form method="post" action="postatusprocess.php">
-            <label>Status Code <input id = "code" type="text" name="statuscode" maxlength="5" placeholder = "S0001"></br>
-            <label>Status <input id= "status"type="text" name="status" placeholder="Enter Status"></br>
+    <div class = "container">
+        <div class="heading">
+            <h1>Status Posting System</h1>
+        </div>
+        <div class="bodyContainer">
+            <form method="post" action="postatusprocess.php">
+                <label>Status Code <input id="code" type="text" name="statuscode" maxlength="5"
+                        placeholder="S0001"></br>
+                    <label>Status <input id="status" type="text" name="status" placeholder="Enter Status"></br>
 
-            <label>Share</label>
-            <label>Public<input type="radio" id= "share" name= "share" value= "Public">
-            <label>Friends<input type="radio" name="share" value="Friends">
-            <label>Only Me<input type="radio" name="share" value="Only Me"></br>
-            <label>Date<input type= "date" name="date" id = "date"></br>
+                        <label>Share</label>
+                        <label>Public<input type="radio" id="share" name="share" value="Public">
+                            <label>Friends<input type="radio" name="share" value="Friends">
+                                <label>Only Me<input type="radio" name="share" value="Only Me"></br>
+                                    <label>Date<input type="date" name="date" id="date"></br>
 
-            <label>Permission</label>
-            <input type="checkbox" name="permission" value="Allow Likes" id = "permission"><label>Allow Likes</label>
-            <input type="checkbox" name="permission" value="Allow Comments"><label>Allow Comments</label>
-            <input type="checkbox" name="permission" value="Allow Share"><label>Allow Share</label></br>
-            <input type="submit" name="post" value="POST" id = "pbutton">
-            <input type="reset" name="reset" value="RESET" id = "rbutton">
-        </form>
+                                        <label>Permission</label>
+                                        <input type="checkbox" name="permission" value="Allow Likes"
+                                            id="permission"><label>Allow Likes</label>
+                                        <input type="checkbox" name="permission" value="Allow Comments"><label>Allow
+                                            Comments</label>
+                                        <input type="checkbox" name="permission" value="Allow Share"><label>Allow
+                                            Share</label></br>
+                                        <input type="submit" name="post" value="POST" id="pbutton">
+                                        <input type="reset" name="reset" value="RESET" id="rbutton">
+            </form>
+        </div>
     </div>
     <div>
         <a href="http://cyz8072.cmslamp14.aut.ac.nz/assign1/index.html">Return to Home Page</a>
