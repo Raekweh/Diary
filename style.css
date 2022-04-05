@@ -2,6 +2,7 @@ body
 {
     font-family: Helvetica;
     background-color: #C64BBC;
+    font-size: 23px;
 }
 
 .heading {
@@ -11,8 +12,8 @@ body
 .bodyContainer{
     padding:50px;
     margin-top:1%;
-    margin-right:25%;
-    margin-left: 25%;
+    margin-right:20%;
+    margin-left: 20%;
     border: 1px solid #000000;
     border-radius: 15px;
     background-color: #ccff90;
@@ -20,27 +21,35 @@ body
 
 #code
 {
-    margin-left: 10%;
+    margin-left: 18%;
+    width: auto;
+    height:25px;
 }
 
 #status
 {
-    margin-left: 17%;
+    margin-left: 26.4%;
+    width: auto;
+    height:20px;
 }
 
 #share
 {
-    margin-left: 10%;
+    margin-left: 18.5%;
+    width: auto;
+    height:20px;
 }
 
 #permission
 {
-    margin-left: 12%;
+    margin-left: 20%;
 }
 
 #date
 {
-    margin-left: 20%;
+    margin-left: 29%;
+    width: auto;
+    height:20px;
 }
 
 #pbutton
