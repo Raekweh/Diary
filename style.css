@@ -1,7 +1,16 @@
 body 
 {
     font-family: Helvetica;
-    background-color: #C64BBC;
+    background-color: #E39ff6;
+    font-size: 23px;
+}
+
+h3{
+    font-size: 20px;
+}
+
+p{
+    font-size: 15px;
 }
 
 .heading {
@@ -9,43 +18,68 @@ body
     font-size: 20px;
 }
 .bodyContainer{
-    padding:50px;
+    padding:20px;
     margin-top:1%;
-    margin-right:25%;
-    margin-left: 25%;
+    margin-right:1%;
+    margin-left: 1%;
     border: 1px solid #000000;
     border-radius: 15px;
     background-color: #ccff90;
 }
 
-#code
+.container
 {
-    margin-left: 10%;
+    padding:10px;
+    margin-top:1%;
+    margin-right:20%;
+    margin-left: 20%;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    background-color: #EFFD5F;
 }
 
-#status
+#codebox
 {
-    margin-left: 17%;
+    margin-left: 19%;
+    width: auto;
+    height:25px;
 }
 
-#share
+#statusbox
 {
-    margin-left: 10%;
+    margin-left: 26%;
+    width: auto;
+    height:20px;
 }
 
-#permission
+#sharebox
 {
-    margin-left: 12%;
+    margin-left: 18.5%;
+    width: auto;
+    height:20px;
 }
 
-#date
+#permissionbox
 {
     margin-left: 20%;
 }
 
+#datebox
+{
+    margin-left: 29%;
+    width: auto;
+    height:20px;
+}
+
+#searchbox
+{
+    width: auto;
+    height:25px;
+    margin-left: 1%;
+}
+
 #pbutton
 {
-    margin-top: 1%;
     width: 100px;
     height: 50px;
     margin-left: 35%;
@@ -55,17 +89,57 @@ body
 
 #rbutton
 {
-    margin-top: 10%;
+    margin-top: 3%;
     width: 100px;
     height: 50px;
     background-color: antiquewhite;
     border-radius: 10px;
 }
 
-#postlink
+#sbutton
+{
+    margin-top: 1%;
+    margin-left: 45%;
+    width: 100px;
+    height: 40px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+}
+
+#posthref
 {
     border: 1px solid #000000;
     border-radius: 5px;
-    background-color: antiquewhite;
-    font-size: 30px;
+    background-color: #EFFD5F;
+    font-size: 25px;
+}
+
+#homehref
+{
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #EFFD5F;
+    font-size: 25px;
+}
+
+#searchhref
+{
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #EFFD5F;
+    font-size: 25px;
+}
+
+#abouthref
+{
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #EFFD5F;
+    font-size: 25px;
+    margin-left:70%;
+}
+
+#searchstatus
+{
+    margin-left: 35%;
 }
