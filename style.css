@@ -5,6 +5,14 @@ body
     font-size: 23px;
 }
 
+h3{
+    font-size: 20px;
+}
+
+p{
+    font-size: 15px;
+}
+
 .heading {
     text-align: center;
     font-size: 20px;
