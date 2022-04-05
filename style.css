@@ -40,7 +40,7 @@ p{
 
 #codebox
 {
-    margin-left: 18%;
+    margin-left: 19%;
     width: auto;
     height:25px;
 }
@@ -74,7 +74,7 @@ p{
 #searchbox
 {
     width: auto;
-    height:40px;
+    height:25px;
 }
 
 #pbutton
@@ -88,7 +88,7 @@ p{
 
 #rbutton
 {
-    margin-top: 5%;
+    margin-top: 3%;
     width: 100px;
     height: 50px;
     background-color: antiquewhite;
