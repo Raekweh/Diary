@@ -1,15 +1,44 @@
-h1 {
+.heading {
     text-align: center;
-    font-size: 40px;
-}
-body {
-    font-family: Helvetica;
-    background-color: #A0AECD;
-}
-p {
     font-size: 20px;
 }
-a {
-    font-size: 15px;
-    text-align: left;
+.bodyContainer{
+    padding:50px;
+    margin-top:1%;
+    margin-right:25%;
+    margin-left: 25%;
+    border: 1px solid #000000;
+    background-color:aquamarine;
+}
+
+#code
+{
+    margin-left: 10%;
+}
+
+#status
+{
+    margin-left: 17%;
+}
+
+#share
+{
+    margin-left: 10%;
+    
+}
+
+#permission
+{
+    margin-left: 12%;
+}
+
+#date
+{
+    margin-left: 20%;
+}
+
+body 
+{
+    font-family: Helvetica;
+    background-color: #A0AECD;
 }
