@@ -90,10 +90,35 @@ p{
     border-radius: 10px;
 }
 
-#postlink
+#posthref
 {
     border: 1px solid #000000;
     border-radius: 5px;
     background-color: #EFFD5F;
-    font-size: 30px;
+    font-size: 25px;
+}
+
+#homehref
+{
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #EFFD5F;
+    font-size: 25px;
+}
+
+#searchhref
+{
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #EFFD5F;
+    font-size: 25px;
+}
+
+#abouthref
+{
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #EFFD5F;
+    font-size: 25px;
+    margin-left:70%;
 }
