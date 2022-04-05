@@ -40,6 +40,7 @@
                     . "VALUES"
                     ."('$code','$status','$permission','$share','$date')";      
 
+                    //sql query to create a table
                     $createTableQuery = "CREATE TABLE formDB"
                     . "(code VARCHAR(5), 
                     status VARCHAR(100), 
