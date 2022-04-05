@@ -1,7 +1,7 @@
 body 
 {
     font-family: Helvetica;
-    background-color: #C64BBC;
+    background-color: #E39ff6;
     font-size: 23px;
 }
 
@@ -38,42 +38,47 @@ p{
     background-color: #EFFD5F;
 }
 
-#code
+#codebox
 {
     margin-left: 18%;
     width: auto;
     height:25px;
 }
 
-#status
+#statusbox
 {
-    margin-left: 26.4%;
+    margin-left: 26%;
     width: auto;
     height:20px;
 }
 
-#share
+#sharebox
 {
     margin-left: 18.5%;
     width: auto;
     height:20px;
 }
 
-#permission
+#permissionbox
 {
     margin-left: 20%;
 }
 
-#date
+#datebox
 {
     margin-left: 29%;
     width: auto;
     height:20px;
 }
 
+#searchbox
+{
+    width: auto;
+    height:40px;
+}
+
 #pbutton
 {
-    margin-top: 1%;
     width: 100px;
     height: 50px;
     margin-left: 35%;
@@ -83,10 +88,20 @@ p{
 
 #rbutton
 {
-    margin-top: 10%;
+    margin-top: 5%;
     width: 100px;
     height: 50px;
-    background-color: #EFFD5F;
+    background-color: antiquewhite;
+    border-radius: 10px;
+}
+
+#sbutton
+{
+    margin-top: 1%;
+    margin-left: 45%;
+    width: 100px;
+    height: 40px;
+    background-color: antiquewhite;
     border-radius: 10px;
 }
 
@@ -121,4 +136,9 @@ p{
     background-color: #EFFD5F;
     font-size: 25px;
     margin-left:70%;
+}
+
+#searchstatus
+{
+    margin-left: 35%;
 }
