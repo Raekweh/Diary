@@ -20,10 +20,10 @@
         }
         else{
             //Check if the code and the status are non-empty entry
-            if(!empty($_POST["statuscode"]) && isset($_POST["statuscode"]) && !empty($_POST["status"]) && isset($_POST["status"]))
+            if(!empty($_POST["statuscode"]) && isset($_POST["status"]) && !empty($_POST["date"]))
             {
                 //Condition to check if the inputs meet the requirements
-                if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) checkDate($_POST["date"]) && checkPermission($_POST["permission"]) && checkShare($_POST["share"]))
+                if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) && checkDate($_POST["date"]))
                 {
                     //Getting data from the form
                     $code = $_POST["statuscode"];
@@ -50,7 +50,7 @@
                         PRIMARY KEY(code)
                         )";
                     
-                    //Check if the database table exists
+                    //Checks if the database table exists
                     if(EXIST($tableQuery))
                     {                
                         insertQueries($conn, $insertQuery);
