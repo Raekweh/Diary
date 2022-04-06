@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>Post status process</title>
-        <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
     <?php
@@ -20,10 +19,10 @@
         }
         else{
             //Check if the code and the status are non-empty entry
-            if(!empty($_POST["statuscode"]) && isset($_POST["statuscode"]) && !empty($_POST["status"]) && isset($_POST["status"]))
+            if(!empty($_POST["statuscode"]) && isset($_POST["status"]) && !empty($_POST["date"]))
             {
                 //Condition to check if the inputs meet the requirements
-                if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) checkDate($_POST["date"]) && checkPermission($_POST["permission"]) && checkShare($_POST["share"]))
+                if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) && checkDate($_POST["date"]))
                 {
                     //Getting data from the form
                     $code = $_POST["statuscode"];
@@ -41,15 +40,16 @@
                     ."('$code','$status','$permission','$share','$date')";      
 
                     //sql query to create a table
-                    $createTableQuery = "CREATE TABLE formDB"
-                    . "(code VARCHAR(5), 
-                    status VARCHAR(100), 
-                    date DATE, 
-                    permission VARCHAR(50), 
-                    share VARCHAR(50), 
-                    PRIMARY KEY (code) )";
+                    $createTableQuery = "CREATE TABLE $sql_tble(
+                        code VARCHAR(5) NOT NULL,
+                        status VARCHAR(50) NOT NULL,
+                        date DATE NOT NULL,
+                        permission VARCHAR(255),
+                        share VARCHAR(255),
+                        PRIMARY KEY(code)
+                        )";
                     
-                    //Check if the database table exists
+                    //Checks if the database table exists
                     if(EXIST($tableQuery))
                     {                
                         insertQueries($conn, $insertQuery);
@@ -122,7 +122,7 @@
                 return true;
             }
             else{
-                echo "THe database does not exist";
+                echo "The database does not exist";
             }
         }
         //functions to check if the code is correct
@@ -135,7 +135,7 @@
                 for($i = 0 ; $i < $codeLen; $i++)
                 {
                     //Check if the first character is a letter (might need to change it to caps only and give a warning)
-                    if($i == 0 && !(is_numeric($code[$i])))
+                    if($i == 0 && !(is_numeric($code[$i])) && $code[$i] == 'S')
                     {
                         $counter++;
                     }
@@ -180,27 +180,27 @@
             return $d && $d -> format($format) == $date;
         }
 
-        //Checks if one of the share options are selected //Not tested
-        function checkShare($share)
-        {
-            //Checks if the radiobutton is null or not selected
-            if(isset($share))
-            {
-                return true;
-            }
-            return false;
-        }
+        // //Checks if one of the share options are selected //Not tested
+        // function checkShare($share)
+        // {
+        //     //Checks if the radiobutton is null or not selected
+        //     if(isset($share))
+        //     {
+        //         return true;
+        //     }
+        //     return false;
+        // }
 
-        //Checks if one of the permission options are selected //Not tested
-        function checkPermission($permission)
-        {
-            //Check if the checkbox is null or not selected
-            if(isset($permission))
-            {
-                return true;
-            }
-            return false;
-        }
+        // //Checks if one of the permission options are selected //Not tested
+        // function checkPermission($permission)
+        // {
+        //     //Check if the checkbox is null or not selected
+        //     if(isset($permission))
+        //     {
+        //         return true;
+        //     }
+        //     return false;
+        // }
     ?>
 </body>
 </html>
