@@ -123,7 +123,7 @@
                 return true;
             }
             else{
-                echo "THe database does not exist";
+                echo "The database does not exist";
             }
         }
         //functions to check if the code is correct
