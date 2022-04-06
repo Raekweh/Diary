@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>Post status process</title>
-        <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
     <?php
@@ -136,7 +135,7 @@
                 for($i = 0 ; $i < $codeLen; $i++)
                 {
                     //Check if the first character is a letter (might need to change it to caps only and give a warning)
-                    if($i == 0 && !(is_numeric($code[$i])))
+                    if($i == 0 && !(is_numeric($code[$i])) && $code[$i] == 'S')
                     {
                         $counter++;
                     }
