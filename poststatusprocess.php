@@ -41,13 +41,14 @@
                     ."('$code','$status','$permission','$share','$date')";      
 
                     //sql query to create a table
-                    $createTableQuery = "CREATE TABLE formDB"
-                    . "(code VARCHAR(5), 
-                    status VARCHAR(100), 
-                    date DATE, 
-                    permission VARCHAR(50), 
-                    share VARCHAR(50), 
-                    PRIMARY KEY (code) )";
+                    $createTableQuery = "CREATE TABLE $sql_tble(
+                        code VARCHAR(5) NOT NULL,
+                        status VARCHAR(50) NOT NULL,
+                        date DATE NOT NULL,
+                        permission VARCHAR(255),
+                        share VARCHAR(255),
+                        PRIMARY KEY(code)
+                        )";
                     
                     //Check if the database table exists
                     if(EXIST($tableQuery))
@@ -180,27 +181,27 @@
             return $d && $d -> format($format) == $date;
         }
 
-        //Checks if one of the share options are selected //Not tested
-        function checkShare($share)
-        {
-            //Checks if the radiobutton is null or not selected
-            if(isset($share))
-            {
-                return true;
-            }
-            return false;
-        }
+        // //Checks if one of the share options are selected //Not tested
+        // function checkShare($share)
+        // {
+        //     //Checks if the radiobutton is null or not selected
+        //     if(isset($share))
+        //     {
+        //         return true;
+        //     }
+        //     return false;
+        // }
 
-        //Checks if one of the permission options are selected //Not tested
-        function checkPermission($permission)
-        {
-            //Check if the checkbox is null or not selected
-            if(isset($permission))
-            {
-                return true;
-            }
-            return false;
-        }
+        // //Checks if one of the permission options are selected //Not tested
+        // function checkPermission($permission)
+        // {
+        //     //Check if the checkbox is null or not selected
+        //     if(isset($permission))
+        //     {
+        //         return true;
+        //     }
+        //     return false;
+        // }
     ?>
 </body>
 </html>
