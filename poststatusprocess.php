@@ -19,7 +19,7 @@
         }
         else{
             //Check if the code and the status are non-empty entry
-            if(!empty($_POST["statuscode"]) && isset($_POST["status"]) && !empty($_POST["date"]))
+            if(!empty($_POST["statuscode"]) && isset($_POST["status"]) && isset($_POST["date"]))
             {
                 //Condition to check if the inputs meet the requirements
                 if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) && checkDate($_POST["date"]))
@@ -56,7 +56,7 @@
                     }
                     else
                     {
-                        createingTable($conn,$createTableQuery, $insertQuery);
+                        createingTable($conn, $createTableQuery, $insertQuery);
                     }
                 }
                 else
@@ -97,7 +97,7 @@
             //Checks if the eceuction was successful
             if(!$result)
             {
-                echo "<p> Somethign is wrong with ", $insertQuery,"</p>";
+                echo "<p> Something is wrong with ", $insertQuery,"</p>";
             }
             else
             {
@@ -152,6 +152,7 @@
                 }
                 else
                 {
+                    echo "<p>The code is not in the correct formmat";
                     return false;
                 }
             }
@@ -173,34 +174,12 @@
             return false;
         }                
         
-        //Check the date format
+        //Check the date formmat
         function checkDate($date, $format = 'd/m/Y')
         {
             $d = DateTime::createFromFormat($format, $date);
             return $d && $d -> format($format) == $date;
         }
-
-        // //Checks if one of the share options are selected //Not tested
-        // function checkShare($share)
-        // {
-        //     //Checks if the radiobutton is null or not selected
-        //     if(isset($share))
-        //     {
-        //         return true;
-        //     }
-        //     return false;
-        // }
-
-        // //Checks if one of the permission options are selected //Not tested
-        // function checkPermission($permission)
-        // {
-        //     //Check if the checkbox is null or not selected
-        //     if(isset($permission))
-        //     {
-        //         return true;
-        //     }
-        //     return false;
-        // }
     ?>
 </body>
 </html>

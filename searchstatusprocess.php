@@ -6,7 +6,7 @@
     <body>
         <div class = "bodyContainer">
             <?php
-            require_once('../..conf/sqlinfo.php');
+            require_once('./conf/sqlinfo.php');
 
             //Checks if the sqli_connection is a true or false
             $conn = @mysqli_connect($sql_host,
@@ -38,14 +38,12 @@
                         displayingHref();
                     }
                     else{
-                        while($row)
+                        while($row = mysqli_fetch_assoc($result))
                         {
-                            echo "<tr><th>code: </th><td>{$row[0]}</td>";
-                            echo "<th>status: </th><td>{$row[1]</td>";
-                            echo "<th>date: </th><td>{$row[2]</td>";
-                            echo "<th>permssion: </th><td>{$row[3]</td>";
-                            echo "<th>share: </th><td>{$row[4]</td></tr>";
-                            $row = mysqli_fetch_row($result);
+                            echo "<tr><th>car</th><td>",$row["car_id"],"</td></tr>";
+                            echo "<tr><th>model</th><td>",$row["make"],"</td></tr>";
+                            echo "<tr><th>make</th><td>",$row["model"],"</td></tr>";
+                            echo "<tr><th>price</th><td>",$row["price"],"</td></tr>";
                         }
                         displayingHref();
                     }  
