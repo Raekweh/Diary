@@ -20,12 +20,16 @@
             }
             else
             {
+                echo "<p>Databse connaction successful</p>";
                 //Check if the search input is empty
                 if(!empty($_GET["searchinput"]))
                 {
+                    echo "<p>input is not blank</p>";
                     $statusinput = $_GET["searchinput"];
+                    // echo $statusinput;
                     $searchQuery = "SELECT * FROM $sql_table WHERE status = '%$statusinput%'";
-                    $result = mysqli_query($searchQuery);
+                    // echo $searchQuery;
+                    $result = @mysqli_query($conn, $searchQuery);
                     $row = mysqli_fetch_row($result);
 
                     //starting a table to display the sql queries
@@ -45,10 +49,11 @@
                             echo "<tr><th>make</th><td>",$row["model"],"</td></tr>";
                             echo "<tr><th>price</th><td>",$row["price"],"</td></tr>";
                         }
+                        mysqli_free_result($result);
                         displayingHref();
                     }  
+                    echo "</table>";
                 }
-                echo "</table>";
                 else{
                     echo "<p>Blank</p>";
                 }
