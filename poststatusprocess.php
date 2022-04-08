@@ -14,9 +14,6 @@
             $sql_pass,
             $sql_db);       
 
-            $date = date("d-m-Y", strtotime($_POST["date"]));
-            echo $date;
-
             if(!$conn)
             {
                 echo "<p>Database connection failure <p>";
@@ -26,14 +23,23 @@
                 echo "<p>Databse connaction successful</p>";
                 if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) && validDate($_POST["date"]))
                 {
-
                     echo "Congrats";
+                    $code = $_POST["statuscode"];
+                    $status = $_POST["status"];
+                    $date = date("d/m/Y", strtotime($_POST["date"]));
+                    $share = $_POST["share"];
+                    $permisisonStr = $_POST["permission"];
+                    $permission = "";
+                    foreach($permisisonStr as $value)
+                    {
+                        $permission .= $value . " ";
+                    }
+
                 }
                 else
                 {
                     echo "<p>Check input <p>";
                 }
-
             }
 
             //functions to check if the code is correct
@@ -111,6 +117,17 @@
                 return true;
             }
 
+            function permissionValue($like, $comment, $share)
+            {
+                echo "<p>YOu are gay</p>";
+                echo $like;
+                echo $comment;
+                echo $share;
+                $permissionStr = " ";
+                $permissionStr = $permissionStr . $like . $comment . $share;
+                echo $permissionstr; 
+                return $permissionStr;
+            }
             //Closing the database
             mysql_close($conn);
             ?>
