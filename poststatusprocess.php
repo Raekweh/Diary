@@ -14,6 +14,9 @@
             $sql_pass,
             $sql_db);       
 
+            $date = date("d-m-Y", strtotime($_POST["date"]));
+            echo $date;
+
             if(!$conn)
             {
                 echo "<p>Database connection failure <p>";
@@ -21,8 +24,9 @@
             else
             {
                 echo "<p>Databse connaction successful</p>";
-                if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]))
+                if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) && validDate($_POST["date"]))
                 {
+
                     echo "Congrats";
                 }
                 else
@@ -32,10 +36,9 @@
 
             }
 
-                    //functions to check if the code is correct
+            //functions to check if the code is correct
             function checkCode($code)
             {
-                echo "<p>  The code is: ". $code;
                 //check if the code is null or empty
                 if(empty($code) || !isset($code))
                 {
@@ -81,7 +84,6 @@
 
             function checkStatus($status)
             {
-                echo "<p> THe status is : " .$status;
                 if(empty($status) || !isset($status))
                 {
                     echo "<p>Status box is empty</p>";
@@ -98,6 +100,17 @@
                     return false;
                 }
             } 
+
+            function validDate($date)
+            {
+                if(empty($date) || !isset($date))
+                {
+                    echo "<p>Date box is empty</p>";
+                    return false;
+                }
+                return true;
+            }
+
             //Closing the database
             mysql_close($conn);
             ?>
