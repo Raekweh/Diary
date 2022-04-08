@@ -21,7 +21,7 @@
             else
             {
                 echo "<p>Databse connaction successful</p>";
-                if(checkCode($_POST["statuscode"]))
+                if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]))
                 {
                     echo "Congrats";
                 }
@@ -35,6 +35,7 @@
                     //functions to check if the code is correct
             function checkCode($code)
             {
+                echo "<p>  The code is: ". $code;
                 //check if the code is null or empty
                 if(empty($code) || !isset($code))
                 {
@@ -49,7 +50,6 @@
                     {
                         for($i = 0 ; $i < $codeLen; $i++)
                         {
-                            echo $i;
                             //Check if the first character is a letter (might need to change it to caps only and give a warning)
                             if($i == 0 && !(is_numeric($code[$i])) && $code[$i] == 'S')
                             {
@@ -81,9 +81,10 @@
 
             function checkStatus($status)
             {
-                if(empty($code) || !isset($code))
+                echo "<p> THe status is : " .$status;
+                if(empty($status) || !isset($status))
                 {
-                    echo "<p>Codebox is empty</p>";
+                    echo "<p>Status box is empty</p>";
                     return false;
                 }
                 else
