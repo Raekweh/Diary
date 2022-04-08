@@ -2,6 +2,7 @@
 <html>
     <head>
         <title> Search Status Process</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class = "bodyContainer">
@@ -24,6 +25,8 @@
                 if(checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) && validDate($_POST["date"]))
                 {
                     echo "Congrats";
+
+                    //Storing values
                     $code = $_POST["statuscode"];
                     $status = $_POST["status"];
                     $date = date("d/m/Y", strtotime($_POST["date"]));
@@ -34,6 +37,18 @@
                     foreach($permisisonInput as $value)
                     {
                         $permission .= $value . " ";
+                    }
+
+                    $tableExistence = "SELECT 1 FROM $sql_tble";
+                    $tableResult = @mysqli_query($conn,$tableExistence);
+                    //Checking if the table exist in the database;
+                    if($tableResult !== FALSE)
+                    {
+                        echo "<p>The table exist</p>";
+                    }
+                    else
+                    {
+                        echo "<p>The table does not exist</p>";
                     }
                 }
                 else
@@ -117,17 +132,6 @@
                 return true;
             }
 
-            function permissionValue($like, $comment, $share)
-            {
-                echo "<p>YOu are gay</p>";
-                echo $like;
-                echo $comment;
-                echo $share;
-                $permissionStr = " ";
-                $permissionStr = $permissionStr . $like . $comment . $share;
-                echo $permissionstr; 
-                return $permissionStr;
-            }
             //Closing the database
             mysql_close($conn);
             ?>

@@ -2,6 +2,7 @@
 <html>
     <head>
         <title> Search Status Process</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class = "bodyContainer">
