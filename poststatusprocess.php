@@ -28,13 +28,13 @@
                     $status = $_POST["status"];
                     $date = date("d/m/Y", strtotime($_POST["date"]));
                     $share = $_POST["share"];
-                    $permisisonStr = $_POST["permission"];
+                    $permisisonInput = $_POST["permission"];
                     $permission = "";
-                    foreach($permisisonStr as $value)
+                    //Storing permission variables into a single string
+                    foreach($permisisonInput as $value)
                     {
                         $permission .= $value . " ";
                     }
-
                 }
                 else
                 {
