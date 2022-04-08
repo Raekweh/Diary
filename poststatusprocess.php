@@ -39,15 +39,38 @@
                         $permission .= $value . " ";
                     }
 
+                    //Sqli queries
                     $tableExistence = "SELECT 1 FROM $sql_tble";
+                    $creatingTable = "CREATE TABLE forumDB(
+                        code VARCHAR(5) NOT NULL,
+                        status VARCHAR(255) NOT NULL,
+                        date DATE NOT NULL,
+                        permission VARCHAR(255),
+                        share VARCHAR(255),
+                        PRIMARY KEY (code)
+                        )";
+                    $dropTable = "DROP TABLE $sql_tble";
+
                     $tableResult = @mysqli_query($conn,$tableExistence);
+
                     //Checking if the table exist in the database;
                     if($tableResult !== FALSE)
                     {
+                        //Drops the table
                         echo "<p>The table exist</p>";
                     }
                     else
                     {
+                        //Drops the table for insurance
+                        $dropTableResult = @mysqli_query($conn,$dropTable);
+                        $creatingTableResult = @mysqli_query($conn,$creatingTable);
+                        if($creatingTableResult !== FALSE)
+                        {
+                            echo "<p>The table has been created</p>";
+                        }
+                        else{
+                            echo "<p>The table had failed to be created</p>";
+                        }
                         echo "<p>The table does not exist</p>";
                     }
                 }
@@ -55,6 +78,11 @@
                 {
                     echo "<p>Check input <p>";
                 }
+            }
+
+            function creationTable($tableQuery)
+            {
+
             }
 
             //functions to check if the code is correct
