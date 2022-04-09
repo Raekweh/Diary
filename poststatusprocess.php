@@ -29,7 +29,8 @@
                     //Storing values
                     $code = $_POST["statuscode"];
                     $status = $_POST["status"];
-                    $date = date("d/m/Y", strtotime($_POST["date"]));
+                    // $date = date("d/m/Y", strtotime($_POST["date"]));
+                    $date = $_POST["date"];
                     $share = $_POST["share"];
                     $permisisonInput = $_POST["permission"];
                     $permission = "";
@@ -50,29 +51,32 @@
                         PRIMARY KEY (code)
                         )";
                     $dropTable = "DROP TABLE $sql_tble";
+                    $insertQuery = "INSERT INTO forumDB (code, status, date, permission, share)
+                    VALUES ('$code' , '$status' , '$date' , '$permission', '$share')";
+
 
                     $tableResult = @mysqli_query($conn,$tableExistence);
 
                     //Checking if the table exist in the database;
                     if($tableResult !== FALSE)
                     {
-                        //Drops the table
                         echo "<p>The table exist</p>";
+                        insertingQuery($conn, $insertQuery);
                     }
                     else
                     {
+                        echo "<p>The table does not exist</p>";
                         //Drops the table for insurance
                         $dropTableResult = @mysqli_query($conn,$dropTable);
                         $creatingTableResult = @mysqli_query($conn,$creatingTable);
                         if($creatingTableResult !== FALSE)
                         {
-                            echo "<p>The table has been created</p>";
+                            echo "<p> Created table successfully</p>";
                         }
-                        else
-                        {
-                            echo "<p>The table had failed to be created</p>";
+                        else{
+                            echo "<p>Error creating table</p>";
                         }
-                        echo "<p>The table does not exist</p>";
+                        insertingQuery($conn, $insertQuery);
                     }
                 }
                 else
@@ -81,6 +85,17 @@
                 }
             }
 
+            function insertingQuery($conn, $insertQuery)
+            {
+                $insertingResult = @mysqli_query($conn, $insertQuery);
+                if($insertingResult !== FALSE)
+                {
+                    echo "<p> Successful</p>";
+                }
+                else{
+                    echo "<p>Error inserting into table</p>";
+                }
+            }
             
             //functions to check if the code is correct
             function checkCode($code)
