@@ -42,7 +42,7 @@
                     //Sqli queries
                     $tableExistence = "SELECT 1 FROM $sql_tble";
                     $creatingTable = "CREATE TABLE forumDB(
-                        code VARCHAR(5) NOT NULL,
+                    code VARCHAR(5) NOT NULL,
                         status VARCHAR(255) NOT NULL,
                         date DATE NOT NULL,
                         permission VARCHAR(255),
@@ -68,7 +68,8 @@
                         {
                             echo "<p>The table has been created</p>";
                         }
-                        else{
+                        else
+                        {
                             echo "<p>The table had failed to be created</p>";
                         }
                         echo "<p>The table does not exist</p>";
@@ -80,11 +81,7 @@
                 }
             }
 
-            function creationTable($tableQuery)
-            {
-
-            }
-
+            
             //functions to check if the code is correct
             function checkCode($code)
             {
