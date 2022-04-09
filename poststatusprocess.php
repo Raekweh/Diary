@@ -25,7 +25,6 @@
         } 
         else
          {
-            echo "<p>Databse connaction successful</p>";
             if (checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) && validDate($_POST["date"])) 
             {
                 echo "Congrats";
@@ -48,7 +47,6 @@
                 //Checking if the code exist in the database 
                 if(checkDatabase($checkCodeQuery, $conn))
                 {
-                    echo "<p>LET ME INNNNNNN</p>";
                     //Sqli queries
                     $tableExistence = "SELECT 1 FROM $sql_tble";
                     $creatingTable = "CREATE TABLE $sql_tble(
@@ -69,34 +67,17 @@
                     //Checking if the table exist in the database;
                     if ($tableResult !== FALSE) 
                     {
-                        echo "<p>The table exist</p>";
                         insertingQuery($conn, $insertQuery);
                     } 
                     else 
                     {
-                        echo "<p>The table does not exist</p>";
                         //Drops the table for insurance
                         $dropTableResult = @mysqli_query($conn, $dropTable);
                         $creatingTableResult = @mysqli_query($conn, $creatingTable);
-                        if ($creatingTableResult !== FALSE)
-                        {
-                            echo "<p> Created table successfully</p>";
-                        } 
-                        else 
-                        {
-                            echo "<p>Error creating table</p>";
-                        }
                         insertingQuery($conn, $insertQuery);
                     }
                 }
-                else{
-                    echo "<p>The code already exist in the database</p>";
-                }
             } 
-            else 
-            {
-                echo "<p>Check input <p>";
-            }
         }
 
         //Checks if the code exist in the database
@@ -120,7 +101,7 @@
             $insertingResult = @mysqli_query($conn, $insertQuery);
             if ($insertingResult !== FALSE) 
             {
-                echo "<p> Successful</p>";
+                echo "<p>Successful</p>";
             } 
             else 
             {
@@ -191,7 +172,11 @@
                 {
                     return true;
                 }
-                return false;
+                else
+                {
+                    echo "<p>Please check if you have any other special characters</p>";
+                    return false;
+                }
             }
         }
 
