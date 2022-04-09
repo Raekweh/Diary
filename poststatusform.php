@@ -21,7 +21,7 @@
                 <label>Friends<input type="radio" name="share" value="Friends">
                 <label>Only Me<input type="radio" name="share" value="Only Me"></br>
 
-                <label>Date:<input type="date" name="date" id="datebox"></br>
+                <label>Date:<input type="date" name="date" id="datebox" value="<?php echo date("Y-m-d") ?>"></br>
 
                     <label>Permission:</label>
                     <input type="checkbox" name="permission[]" value="Allow Likes" id="permissionbox"><label>Allow Likes</label>
