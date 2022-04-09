@@ -60,13 +60,14 @@
                     }
                     else{
                         echo "<p>Blank</p>";
+                        displayingHref();
                     }
                 }
 
                 //Closing the database
                 mysql_close($conn);
 
-                //Displaying the links
+                //Displaying the links back to search status and home page
                 function displayingHref()
                 {
                     echo '<p><a id = "searchhref" href="http://cyz8072.cmslamp14.aut.ac.nz/assign1/searchstatusform.html">Search status</a>

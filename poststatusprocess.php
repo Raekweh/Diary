@@ -31,8 +31,6 @@
             {
                 if (checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) && validDate($_POST["date"])) 
                 {
-                    echo "Congrats";
-
                     //Storing values
                     $code = $_POST["statuscode"];
                     $status = $_POST["status"];
@@ -81,17 +79,25 @@
                             insertingQuery($conn, $insertQuery);
                         }
                     }
+                    else{
+                        displayingHref();
+                    }
                 } 
+                else
+                {
+                    displayingHref();
+                }
             }
 
             //Checks if the code exist in the database
             function checkDatabase($checkCodeQuery, $conn)
             {
-                echo $checkCodeQuery;
                 $checkCodeResult = @mysqli_query($conn, $checkCodeQuery);
                 if(mysqli_num_rows($checkCodeResult) > 0)
                 {
-                    echo "<p>The code already exist in the database</p>";
+                    echo "<p>The code already exists.<br>
+                    Please try another one!
+                    </p>";
                     return false;
                 }
                 else{
@@ -99,24 +105,27 @@
                 }
             }
 
+            //Displaying the links back to post status and home page
+            function displayingHref()
+            {
+                echo '<p><a id = "searchhref" href="http://cyz8072.cmslamp14.aut.ac.nz/assign1/poststatusform.php">Post status</a>
+                <a id = "homehref" href="http://cyz8072.cmslamp14.aut.ac.nz/assign1/index.html">Return to Home</a></p>';
+            }
+            
             //Inserting Query into the database
             function insertingQuery($conn, $insertQuery)
             {
                 $insertingResult = @mysqli_query($conn, $insertQuery);
                 if ($insertingResult !== FALSE) 
                 {
-                    echo "<p>Successful</p>";
+                    echo "<p>Successful.</p>";
+                    displayingHref();
                 } 
-                else 
-                {
-                    echo "<p>Error inserting into table</p>";
-                }
             }
 
             //functions to check if the code is correct
             function checkCode($code)
             {
-                //Query to check if the code exist in the database
                 //check if the code is null or empty
                 if (empty($code) || !isset($code)) 
                 {
@@ -131,7 +140,7 @@
                     {
                         for ($i = 0; $i < $codeLen; $i++) 
                         {
-                            //Check if the first character is a letter (might need to change it to caps only and give a warning)
+                            //Check if the first character is a letter
                             if ($i == 0 && !(is_numeric($code[$i])) && $code[$i] == 'S') 
                             {
                                 $counter++;
@@ -142,14 +151,16 @@
                                 $counter++;
                             }
                         }
-                        //Checking if the code formmatt is correct (Need something to check if the code exist e.g. use database)
+                        //Checking if the code formmatt is correct
                         if ($counter == 5) 
                         {
                             return true;
                         } 
                         else 
                         {
-                            echo "<p>Please check if you have entered the code in the correct format</p>";
+                            echo "<p>Wrong format!<br>
+                            The status code must start with an 'S' followed by four digits, e.g. 'S0001'.
+                            </p>";
                             return false;
                         }
                     } 
@@ -170,7 +181,7 @@
                 } 
                 else 
                 {
-                    $pattern = "/[a-zA-Z0-9\s,\.!\?]*$/";
+                    $pattern = "/^[a-zA-Z0-9\s,\.!\?]*$/";
                     //Checks if the status contains only alphabet and spaces
                     if (preg_match($pattern, $status)) 
                     {
@@ -178,7 +189,10 @@
                     }
                     else
                     {
-                        echo "<p>Please check if you have any other special characters</p>";
+                        echo "<p>
+                        Your status is in the wrong format!<br>
+                        The status can only contain alphanumericals and spaces, comma, period, exclamation point and question marks and cannot be blank
+                        </p>";
                         return false;
                     }
                 }
@@ -200,5 +214,4 @@
         </div>
     </div>
 </body>
-
 </html>

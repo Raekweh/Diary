@@ -23,12 +23,12 @@
 
                 <label>Date:<input type="date" name="date" id="datebox" value="<?php echo date("Y-m-d") ?>"></br>
 
-                    <label>Permission:</label>
-                    <input type="checkbox" name="permission[]" value="Allow Likes" id="permissionbox"><label>Allow Likes</label>
-                    <input type="checkbox" name="permission[]" value="Allow Comments"><label>Allow Comments</label>
-                    <input type="checkbox" name="permission[]" value="Allow Share"><label>Allow Share</label></br>
-                    <input type="submit" name="post" value="POST" id="pbutton">
-                    <input type="reset" name="reset" value="RESET" id="rbutton">
+                <label>Permission:</label>
+                <input type="checkbox" name="permission[]" value="Allow Likes" id="permissionbox"><label>Allow Likes</label>
+                <input type="checkbox" name="permission[]" value="Allow Comments"><label>Allow Comments</label>
+                <input type="checkbox" name="permission[]" value="Allow Share"><label>Allow Share</label></br>
+                <input type="submit" name="post" value="POST" id="pbutton">
+                <input type="reset" name="reset" value="RESET" id="rbutton">
             </form>
         </div>
     </div>
