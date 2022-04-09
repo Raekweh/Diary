@@ -79,7 +79,8 @@
                             insertingQuery($conn, $insertQuery);
                         }
                     }
-                    else{
+                    else
+                    {
                         displayingHref();
                     }
                 } 
@@ -100,7 +101,8 @@
                     </p>";
                     return false;
                 }
-                else{
+                else
+                {
                     return true;
                 }
             }

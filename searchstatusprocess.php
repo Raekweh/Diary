@@ -58,7 +58,8 @@
                         mysqli_free_result($result);
                         displayingHref();
                     }
-                    else{
+                    else
+                    {
                         echo "<p>Blank</p>";
                         displayingHref();
                     }
