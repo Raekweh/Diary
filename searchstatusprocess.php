@@ -27,9 +27,8 @@
                 {
                     echo "<p>input is not blank</p>";
                     $statusinput = $_GET["searchinput"];
-                    // echo $statusinput;
-                    $searchQuery = "SELECT * FROM $sql_table WHERE status = '%$statusinput%'";
-                    // echo $searchQuery;
+                    $searchQuery = "SELECT * FROM $sql_tble  WHERE status LIKE '%$statusinput%'";
+                    echo $searchQuery;
                     $result = @mysqli_query($conn, $searchQuery);
                     $row = mysqli_fetch_row($result);
 
@@ -42,18 +41,21 @@
                         echo "<p>Not found<p>";
                         displayingHref();
                     }
-                    else{
+                    else
+                    {
+                        echo "<p>Chupapi</p>";
                         while($row = mysqli_fetch_assoc($result))
                         {
-                            echo "<tr><th>car</th><td>",$row["car_id"],"</td></tr>";
-                            echo "<tr><th>model</th><td>",$row["make"],"</td></tr>";
-                            echo "<tr><th>make</th><td>",$row["model"],"</td></tr>";
-                            echo "<tr><th>price</th><td>",$row["price"],"</td></tr>";
+                            echo "<tr><th>Code: </th> <td>",$row["code"],"</td></tr>";
+                            echo "<tr><th>Status: </th><td>",$row["status"],"</td></tr>";
+                            echo "<tr><th>Date: </th><td>",$row["date"],"</td></tr>";
+                            echo "<tr><th>Permission: </th><td>",$row["permission"],"</td></tr>";
+                            echo "<tr><th>Share: </th><td>",$row["share"],"</td></tr>";
                         }
-                        mysqli_free_result($result);
-                        displayingHref();
                     }  
                     echo "</table>";
+                    mysqli_free_result($result);
+                    displayingHref();
                 }
                 else{
                     echo "<p>Blank</p>";
