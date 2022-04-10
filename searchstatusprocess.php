@@ -29,33 +29,42 @@
                     if(!empty($_GET["searchinput"]))
                     {
                         $statusinput = $_GET["searchinput"];
-                        $searchQuery = "SELECT * FROM $sql_tble  WHERE status LIKE '%$statusinput%'";
-                        $result = @mysqli_query($conn, $searchQuery);
-                        $row = mysqli_fetch_row($result);
+                        $searchQuery = "SELECT * FROM $sql_tble WHERE STATUS LIKE '%$statusinput%'";
+                        $searchresult = @mysqli_query($conn, $searchQuery);
+
+                        $statusColumQuery = "SELECT COUNT(status) AS statuslength FROM $sql_tble WHERE STATUS LIKE '%$statusinput%'";
+                        $columnResult = @mysqli_query($conn, $statusColumQuery);
+                        $length = mysqli_fetch_assoc($columnResult);
+                        $statusColumn = $length['statuslength'];
 
                         //starting a table to display the sql queries
                         echo "<table>";
-
                         //If the result does not exist
-                        if(!$result)
+                        if(!$searchresult)
                         {
-                            echo "<p>Not found<p>";
-                            displayingHref();
+                            echo "<p>Something when wrong with " , $query , "</p>";
                         }
                         else
                         {
-                            while($row = mysqli_fetch_assoc($result))
+                            if($statusColumn == 0)
                             {
-                                echo "<tr><th>Code: </th> <td>",$row["code"],"</td></tr>";
-                                echo "<tr><th>Status: </th><td>",$row["status"],"</td></tr>";
-                                echo "<tr><th>Date: </th><td>",$row["date"],"</td></tr>";
-                                echo "<tr><th>Permission: </th><td>",$row["permission"],"</td></tr>";
-                                echo "<tr><th>Share: </th><td>",$row["share"],"</td></tr>";
+                                echo "<p>No Results</p>";
+                            }
+                            else
+                            {
+                                while($row = mysqli_fetch_assoc($searchresult))
+                                {
+                                    echo "<tr><th>Code: </th> <td>",$row["code"],"</td></tr>";
+                                    echo "<tr><th>Status: </th><td>",$row["status"],"</td></tr>";
+                                    echo "<tr><th>Date: </th><td>",$row["date"],"</td></tr>";
+                                    echo "<tr><th>Permission: </th><td>",$row["permission"],"</td></tr>";
+                                    echo "<tr><th>Share: </th><td>",$row["share"],"</td></tr>";
+                                }
                             }
                         }  
                         echo "</table>";
+                        mysqli_free_result($searchresult);
                         echo "<br>";
-                        mysqli_free_result($result);
                         displayingHref();
                     }
                     else
