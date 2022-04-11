@@ -41,7 +41,7 @@ p{
 
 #codebox
 {
-    margin-left: 21%;
+    margin-left: 19%;
     width: auto;
     height:25px;
 }
@@ -62,7 +62,7 @@ p{
 
 #permissionbox
 {
-    margin-left: 22.5%;
+    margin-left: 20%;
 }
 
 #datebox
@@ -140,7 +140,7 @@ p{
     border-radius: 3px;
     background-color: #EFFD5F;
     font-size: 25px;
-    margin-left: 38.5%;
+    margin-left: 31%;
 }
 
 #searchstatus
