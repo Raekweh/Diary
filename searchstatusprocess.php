@@ -7,7 +7,7 @@
     <body>
         <div class = "container">
             <div class = "heading">
-                <h1>Status Posting System</h1>
+                <h1 id = "title">Status Posting System</h1>
             </div>
             <div class = "bodyContainer">
                 <?php
@@ -46,6 +46,7 @@
                         }
                         else
                         {
+                            //no results from the given query
                             if($statusColumn == 0)
                             {
                                 echo "<p>No Results</p>";
@@ -56,7 +57,7 @@
                                 {
                                     echo "<tr><th>Code: </th> <td>",$row["code"],"</td></tr>";
                                     echo "<tr><th>Status: </th><td>",$row["status"],"</td></tr>";
-                                    echo "<tr><th>Date: </th><td>",$row["date"],"</td></tr>";
+                                    echo "<tr><th>Date: </th><td>", date('d/m/Y', strtotime($row['date'])),"</td></tr>";
                                     echo "<tr><th>Permission: </th><td>",$row["permission"],"</td></tr>";
                                     echo "<tr><th>Share: </th><td>",$row["share"],"</td></tr>";
                                 }

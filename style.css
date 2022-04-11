@@ -17,6 +17,7 @@ p{
     text-align: center;
     font-size: 20px;
 }
+
 .bodyContainer{
     padding:20px;
     margin-top:1%;
@@ -112,34 +113,42 @@ p{
     border-radius: 5px;
     background-color: #EFFD5F;
     font-size: 25px;
+    margin-left: 20%;
 }
 
 #homehref
 {
     border: 1px solid #000000;
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: #EFFD5F;
     font-size: 25px;
+    margin-left: 20%;
 }
 
 #searchhref
 {
     border: 1px solid #000000;
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: #EFFD5F;
     font-size: 25px;
+    margin-left: 20%;
 }
 
 #abouthref
 {
     border: 1px solid #000000;
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: #EFFD5F;
     font-size: 25px;
-    margin-left:70%;
+    margin-left: 38.5%;
 }
 
 #searchstatus
 {
     margin-left: 35%;
+}
+
+#title
+{
+    text-shadow: 2px 2px 5px #000000;
 }

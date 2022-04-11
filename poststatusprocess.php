@@ -9,7 +9,7 @@
 <body>
     <div class = "container">
         <div class = "heading">
-            <h1>Status Posting System</h1>
+            <h1 id = "title">Status Posting System</h1>
         </div>
         <div class="bodyContainer">
             <?php
@@ -29,6 +29,7 @@
             } 
             else
             {
+                //Validations
                 if (checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) && validDate($_POST["date"])) 
                 {
                     //Storing values
@@ -38,6 +39,7 @@
                     $share = $_POST["share"];
                     $permisisonInput = $_POST["permission"];
                     $permission = "";
+
                     //Storing permission variables into a single string
                     foreach ($permisisonInput as $value) 
                     {
@@ -59,7 +61,6 @@
                                 share VARCHAR(255),
                                 PRIMARY KEY (code)
                                 )";
-
                         $dropTable = "DROP TABLE $sql_tble";
                         $insertQuery = "INSERT INTO forumDB (code, status, date, permission, share)
                         VALUES ('$code' , '$status' , '$date' , '$permission', '$share')";
@@ -160,7 +161,8 @@
                         } 
                         else 
                         {
-                            echo "<p>Wrong format!<br>
+                            echo "<p>
+                            Wrong format!<br>
                             The status code must start with an 'S' followed by four digits, e.g. 'S0001'.
                             </p>";
                             return false;
