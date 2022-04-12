@@ -23,13 +23,14 @@
                 $sql_db
             );
 
+            //Checking database connection
             if (!$conn) 
             {
                 echo "<p>Database connection failure <p>";
             } 
             else
             {
-                //Validations
+                //Input Validations
                 if (checkCode($_POST["statuscode"]) && checkStatus($_POST["status"]) && validDate($_POST["date"])) 
                 {
                     //Storing values
@@ -95,6 +96,7 @@
             function checkDatabase($checkCodeQuery, $conn)
             {
                 $checkCodeResult = @mysqli_query($conn, $checkCodeQuery);
+                //If the result already exist in the database.
                 if(mysqli_num_rows($checkCodeResult) > 0)
                 {
                     echo "<p>The code already exists.<br>
@@ -126,7 +128,7 @@
                 } 
             }
 
-            //functions to check if the code is correct
+            //Code Validation 
             function checkCode($code)
             {
                 //check if the code is null or empty
@@ -139,6 +141,7 @@
                 {
                     $counter = 0;
                     $codeLen = strlen($code);
+                    //Checks if the code is 5 characters long
                     if ($codeLen == 5) 
                     {
                         for ($i = 0; $i < $codeLen; $i++) 
@@ -170,14 +173,18 @@
                     } 
                     else 
                     {
-                        echo "<p>Please enter a code of length 5";
+                        echo "<p>Please enter a code of length 5<br>
+                        The status code must start with an 'S' followed by four digits, e.g. 'S0001'.
+                        </p>";
                         return false;
                     }
                 }
             }
 
+            //Validation checkfor status
             function checkStatus($status)
             {
+                //Chceks if the status is null or empty 
                 if (empty($status) || !isset($status)) 
                 {
                     echo "<p>Status box is empty</p>";
@@ -186,7 +193,8 @@
                 else 
                 {
                     $pattern = "/^[a-zA-Z0-9\s,\.!\?]*$/";
-                    //Checks if the status contains only alphabet and spaces
+
+                    //Checks if the status contains only alphanumeric, spaces, comma, period, exclamation point and quesiton mark.
                     if (preg_match($pattern, $status)) 
                     {
                         return true;
@@ -202,8 +210,10 @@
                 }
             }
 
+            //Date validation.
             function validDate($date)
             {
+                //Checks if the date is null or empty.
                 if (empty($date) || !isset($date)) 
                 {
                     echo "<p>Date box is empty</p>";

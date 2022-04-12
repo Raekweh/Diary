@@ -19,6 +19,7 @@
                 $sql_pass,
                 $sql_db);       
 
+                //Checking database connection
                 if(!$conn)
                 {
                     echo "<p>Database connection failure <p>";
@@ -37,9 +38,10 @@
                         $length = mysqli_fetch_assoc($columnResult);
                         $statusColumn = $length['statuslength'];
 
+                        
                         //starting a table to display the sql queries
                         echo "<table>";
-                        //If the result does not exist
+                        //Checking ifthe query is correct
                         if(!$searchresult)
                         {
                             echo "<p>Something when wrong with " , $query , "</p>";
@@ -70,7 +72,7 @@
                     }
                     else
                     {
-                        echo "<p>Blank</p>";
+                        echo "<p>Blank.</p>";
                         displayingHref();
                     }
                 }
